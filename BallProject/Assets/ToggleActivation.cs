@@ -6,12 +6,13 @@ public class ToggleActivation : MonoBehaviour
 {
     bool hit = false;
     Transform targetsTransform;
+    
     // Start is called before the first frame update
     void Start()
     {
         targetsTransform = gameObject.transform;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +22,13 @@ public class ToggleActivation : MonoBehaviour
             Vector3 v3 = targetsTransform.position;
             v3.y += Time.deltaTime;
             targetsTransform.position = v3;
+        }
+        else
+        {
+            if(targetsTransform.position.y >= 10)
+            {
+                this.gameObject.SetActive(false);
+            }
         }
     }
     public void OnTriggerEnter(Collider other)
